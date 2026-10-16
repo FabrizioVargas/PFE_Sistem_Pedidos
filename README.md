@@ -1,6 +1,6 @@
 # Reto: Sistema de Registro y Despacho de Pedidos
 
-Aplicación en Angular para registrar órdenes de compra y retirar de la lista los pedidos despachados. Se entrega el código fuente; `node_modules` no forma parte del proyecto.
+Aplicación en Angular para registrar órdenes de compra y retirar de la lista los pedidos despachados.
 
 ## Requisitos
 
