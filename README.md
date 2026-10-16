@@ -30,4 +30,3 @@ Abre la dirección local que muestra Angular CLI. También puedes iniciar el ser
 - `src/app/shared/components`: componentes reutilizables, como los mensajes de estado.
 - `public`: archivos públicos servidos por Angular.
 
-La aplicación usa `NgModule` y formularios reactivos. No tiene API, backend, autenticación ni librerías de interfaz externas.
