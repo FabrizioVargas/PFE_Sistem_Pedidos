@@ -1,0 +1,7 @@
+:host { display: block; }
+.contenedor { width: min(940px, calc(100% - 36px)); margin: 32px auto 52px; }
+.encabezado { margin-bottom: 22px; padding: 25px 28px 27px; border-radius: 12px; background: #234e68; color: white; }
+.marca { margin-bottom: 14px; color: #b9dce9; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; }
+h1 { margin: 0 0 7px; color: white; font-size: clamp(26px, 4vw, 33px); font-weight: 650; letter-spacing: -.5px; }
+.encabezado p { margin: 0; color: #d5e5ec; font-size: 14px; }
+@media (max-width: 600px) { .contenedor { margin-top: 18px; } .encabezado { padding: 21px; } }

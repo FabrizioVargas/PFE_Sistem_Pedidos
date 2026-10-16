@@ -1,0 +1,11 @@
+# Dependencies and generated Angular files
+node_modules/
+dist/
+.angular/
+coverage/
+
+# Local editor and OS files
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
