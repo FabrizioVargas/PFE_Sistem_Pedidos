@@ -15,12 +15,14 @@ ng serve
 
 Abre la dirección local que muestra Angular CLI. También puedes iniciar el servidor con `npm start`. Para generar una versión de producción, ejecuta `npm run build`.
 
-## Reglas del formulario
+## Validaciones implementadas
 
-- Cliente obligatorio.
-- Dirección de entrega obligatoria, con al menos 10 caracteres.
-- Monto mínimo de $15.00.
+- Cliente obligatorio y no puede contener solo espacios.
+- Dirección de entrega obligatoria, con al menos 15 caracteres y sin estar compuesta solo por espacios.
+- Monto mínimo de S/ 20.00.
 - Método de pago obligatorio: efectivo o tarjeta.
+- El código de pedido se genera automáticamente al registrar, con el formato `PED-XXXXX` (por ejemplo, `PED-00001`).
+- Los errores se muestran al interactuar con los campos y no se permite registrar el pedido mientras haya datos inválidos.
 - Los pedidos se almacenan en memoria; al cerrar o recargar la aplicación, se borran.
 
 ## Organización del código
