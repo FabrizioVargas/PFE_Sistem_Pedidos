@@ -1,20 +1,18 @@
 <section class="panel">
-  <div class="cabecera-panel">
-    <div><h2>Registrar pedido</h2><p>Completa la información de entrega y pago.</p></div>
-  </div>
+  <div class="cabecera-panel"><div><h2>Registrar pedido</h2><p>Completa la información de entrega y pago.</p></div></div>
   <form [formGroup]="form" (ngSubmit)="save()" novalidate>
-    <div class="campo"><label for="customer">Cliente</label><input id="customer" type="text" formControlName="customer" placeholder="Nombre del cliente"><small class="error" *ngIf="invalid('customer')">Ingresa el nombre del cliente.</small></div>
-    <div class="campo"><label for="address">Dirección de entrega</label><input id="address" type="text" formControlName="address" placeholder="Calle, número y distrito"><small class="error" *ngIf="invalid('address')"><span *ngIf="form.controls['address'].errors?.['required']">Ingresa una dirección.</span><span *ngIf="form.controls['address'].errors?.['minlength']">La dirección debe tener al menos 10 caracteres.</span></small></div>
+    <div class="campo"><label for="customer">Cliente</label><input id="customer" type="text" formControlName="customer" placeholder="Nombre del cliente"><small class="error" *ngIf="invalid('customer')"><span *ngIf="form.controls['customer'].errors?.['required']">Ingresa el nombre del cliente.</span><span *ngIf="form.controls['customer'].errors?.['pattern']">El nombre no puede contener solo espacios.</span></small></div>
+    <div class="campo"><label for="address">Dirección de entrega</label><input id="address" type="text" formControlName="address" placeholder="Calle, número y distrito"><small class="error" *ngIf="invalid('address')"><span *ngIf="form.controls['address'].errors?.['required']">Ingresa una dirección.</span><span *ngIf="form.controls['address'].errors?.['minlength']">La dirección debe tener al menos 15 caracteres.</span><span *ngIf="form.controls['address'].errors?.['pattern']">La dirección no puede contener solo espacios.</span></small></div>
     <div class="fila">
-      <div class="campo"><label for="amount">Monto de la orden ($)</label><input id="amount" type="number" min="15" step="0.01" formControlName="amount" placeholder="15.00"><small class="error" *ngIf="invalid('amount')"><span *ngIf="form.controls['amount'].errors?.['required']">Ingresa el monto.</span><span *ngIf="form.controls['amount'].errors?.['min']">El monto mínimo es $15.00.</span></small></div>
+      <div class="campo"><label for="amount">Monto de la orden (soles)</label><input id="amount" type="number" min="20" step="0.01" formControlName="amount" placeholder="20.00"><small class="error" *ngIf="invalid('amount')"><span *ngIf="form.controls['amount'].errors?.['required']">Ingresa el monto.</span><span *ngIf="form.controls['amount'].errors?.['min']">El monto mínimo es S/ 20.00.</span></small></div>
       <div class="campo"><label for="paymentMethod">Método de pago</label><select id="paymentMethod" formControlName="paymentMethod"><option value="">Selecciona uno</option><option value="Efectivo">Efectivo</option><option value="Tarjeta">Tarjeta</option></select><small class="error" *ngIf="invalid('paymentMethod')">Selecciona un método de pago.</small></div>
     </div>
-    <button type="submit">Registrar pedido</button>
+    <div class="acciones"><button type="submit">Registrar pedido</button><button type="button" class="boton-limpiar" (click)="clear()">Limpiar</button></div>
     <app-alert *ngIf="message" [message]="message" [type]="messageType"></app-alert>
   </form>
 </section>
 <section class="panel lista">
   <div class="titulo-lista"><div><h2>Pedidos pendientes</h2><p>Revisa las órdenes antes de despacharlas.</p></div><span class="contador"><strong>{{ orders.length }}</strong><span>pendientes</span></span></div>
   <div class="vacio" *ngIf="orders.length === 0"><strong>Todo al día</strong><span>Los pedidos que registres aparecerán aquí.</span></div>
-  <div class="tabla-contenedor" *ngIf="orders.length > 0"><table><thead><tr><th>Cliente</th><th>Dirección</th><th>Monto</th><th>Pago</th><th>Acción</th></tr></thead><tbody><tr *ngFor="let order of orders"><td class="cliente">{{ order.customer }}</td><td>{{ order.address }}</td><td class="monto">${{ order.amount.toFixed(2) }}</td><td><span class="metodo">{{ order.paymentMethod }}</span></td><td><button type="button" class="boton-despachar" (click)="dispatch(order.id)">Despachar</button></td></tr></tbody></table></div>
+  <div class="tabla-contenedor" *ngIf="orders.length > 0"><table><thead><tr><th>Código</th><th>Cliente</th><th>Dirección</th><th>Monto</th><th>Pago</th><th>Acción</th></tr></thead><tbody><tr *ngFor="let order of orders"><td class="codigo">{{ order.orderCode }}</td><td class="cliente">{{ order.customer }}</td><td>{{ order.address }}</td><td class="monto">S/ {{ order.amount.toFixed(2) }}</td><td><span class="metodo">{{ order.paymentMethod }}</span></td><td><button type="button" class="boton-despachar" (click)="dispatch(order.id)">Despachar</button></td></tr></tbody></table></div>
 </section>
